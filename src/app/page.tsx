@@ -1,4 +1,5 @@
 import Hero from '@/components/sections/Hero'
+import ClientMarquee from '@/components/sections/ClientMarquee'
 import FeaturedProducts from '@/components/sections/FeaturedProducts'
 import IndustriesStrip from '@/components/sections/IndustriesStrip'
 import WhyUs from '@/components/sections/WhyUs'
@@ -8,6 +9,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <ClientMarquee />
       <FeaturedProducts />
       <IndustriesStrip />
       <WhyUs />

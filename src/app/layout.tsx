@@ -30,7 +30,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${barlow.variable}`}>
-      <body className="font-sans bg-white text-brand-grey antialiased">
+      <body
+        suppressHydrationWarning
+        className="font-sans bg-white text-brand-grey antialiased"
+      >
         <Navbar />
         <main className="pt-16">{children}</main>
         <Footer />

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import SectionHeader from '@/components/ui/SectionHeader'
 import ProductGrid from '@/components/sections/ProductGrid'
 import CtaBanner from '@/components/sections/CtaBanner'
+import ProductGallery from '@/components/sections/ProductGallery'
 
 export const metadata: Metadata = {
   title: 'Products',
@@ -28,8 +29,8 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
-
       <ProductGrid />
+      <ProductGallery />
       <CtaBanner />
     </>
   )

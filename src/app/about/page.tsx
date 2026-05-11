@@ -1,12 +1,18 @@
 import type { Metadata } from 'next'
 import { ShieldCheck, TrendingUp, User } from 'lucide-react'
 import CtaBanner from '@/components/sections/CtaBanner'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'About Us',
   description: 'Trusted supplier of HDPE, LDPE, and PP polymer materials.',
 }
-
+const clients = [
+  { name: 'BASF', logo: '/images/clients/aditya.png' },
+  { name: 'Dow Chemical', logo: '/images/clients/chmaya.png' },
+  { name: 'LyondellBasell', logo: '/images/clients/adyani.png' },
+  { name: 'Sabic', logo: '/images/clients/mahavir.png' },
+]
 const values = [
   {
     icon: ShieldCheck,
@@ -24,15 +30,15 @@ const values = [
 
 const team = [
   {
-    name: 'Shubham Semwal',
+    name: 'Nitish Dhyani',
     role: 'Founder',
   },
   {
-    name: 'Amit Kumar',
-    role: 'Sales Manager',
+    name: 'Deepak Dhyani',
+    role: 'Plant Head',
   },
   {
-    name: 'Rahul Sharma',
+    name: 'Neha',
     role: 'Operations Manager',
   },
 ]
@@ -117,7 +123,39 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
+      <section className="py-6 md:py-6 bg-white border-t border-brand-grey-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="inline-block text-brand-orange text-xs font-bold tracking-widest uppercase mb-3">
+              Our Clients
+            </span>
+            <h2 className="font-heading text-3xl font-bold text-brand-grey mb-4">
+              Trusted by Industry
+            </h2>
+            <p className="text-brand-grey-light text-base max-w-xl mx-auto leading-relaxed">
+              We are proud to supply some of the world's most respected
+              manufacturers.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
+            {clients.map((client) => (
+              <div
+                key={client.name}
+                className="flex items-center justify-center h-20 border border-brand-grey-border rounded-lg bg-white hover:border-brand-orange hover:shadow-sm transition-all duration-200 px-6"
+              >
+                <div className="relative w-28 h-10">
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">

@@ -10,10 +10,11 @@ export const metadata: Metadata = {
 
 const offices = [
   {
-    city: 'HALDWANI',
-    address: 'ABC',
-    phone: '+1 (800) 765-4321',
-    email: '@com',
+    city: 'Delhi',
+    address:
+      'first floor Building No: 3249 , Gali number 72 ,Badarpur, Molarband Extension',
+    phone: '+91 9999017099 , +91 9990017099',
+    email: 'ronakdhyani16@gmail.com',
   },
   {
     city: 'BADARPUR',

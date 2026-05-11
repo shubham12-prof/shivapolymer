@@ -92,7 +92,7 @@ export default function ContactForm() {
             required
             value={form.name}
             onChange={handleChange}
-            placeholder="John Smith"
+            placeholder="Name"
             className="w-full px-4 py-2.5 border border-brand-grey-border rounded text-sm text-brand-grey placeholder:text-brand-grey-light focus:outline-none focus:border-brand-orange transition-colors duration-200"
           />
         </div>
@@ -106,7 +106,7 @@ export default function ContactForm() {
             required
             value={form.company}
             onChange={handleChange}
-            placeholder="Acme Manufacturing"
+            placeholder="Company Name"
             className="w-full px-4 py-2.5 border border-brand-grey-border rounded text-sm text-brand-grey placeholder:text-brand-grey-light focus:outline-none focus:border-brand-orange transition-colors duration-200"
           />
         </div>
@@ -123,7 +123,7 @@ export default function ContactForm() {
             required
             value={form.email}
             onChange={handleChange}
-            placeholder="john@company.com"
+            placeholder="Email Id"
             className="w-full px-4 py-2.5 border border-brand-grey-border rounded text-sm text-brand-grey placeholder:text-brand-grey-light focus:outline-none focus:border-brand-orange transition-colors duration-200"
           />
         </div>
@@ -136,7 +136,7 @@ export default function ContactForm() {
             name="phone"
             value={form.phone}
             onChange={handleChange}
-            placeholder="+1 (555) 000-0000"
+            placeholder="Contact Number"
             className="w-full px-4 py-2.5 border border-brand-grey-border rounded text-sm text-brand-grey placeholder:text-brand-grey-light focus:outline-none focus:border-brand-orange transition-colors duration-200"
           />
         </div>
