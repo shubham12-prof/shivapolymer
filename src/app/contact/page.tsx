@@ -10,17 +10,19 @@ export const metadata: Metadata = {
 
 const offices = [
   {
+    unit: 'Menufacturing Unit',
+    city: 'Haldwani',
+    address: 'Plot No : 12 Kotabagh industrial area Kaladungi Nainital ',
+    phone: '+91 9999017099 , +91 9990017099',
+    email: 'ronakdhyani16@gmail.com',
+  },
+  {
+    unit: 'Office',
     city: 'Delhi',
     address:
       'first floor Building No: 3249 , Gali number 72 ,Badarpur, Molarband Extension',
     phone: '+91 9999017099 , +91 9990017099',
     email: 'ronakdhyani16@gmail.com',
-  },
-  {
-    city: 'BADARPUR',
-    address: 'DEF',
-    phone: '+1 (800) 765-4321',
-    email: '@com',
   },
 ]
 
@@ -69,43 +71,51 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   {offices.map((office) => (
                     <div
-                      key={office.city}
+                      key={office.unit}
                       className="border border-brand-grey-border rounded-lg p-4 hover:border-brand-orange transition-colors duration-200"
                     >
                       <h4 className="font-heading font-bold text-brand-grey text-sm mb-2">
-                        {office.city}
+                        {office.unit}
                       </h4>
-                      <div className="space-y-1.5 text-xs text-brand-grey-light">
-                        <div className="flex items-start gap-2">
-                          <MapPin
-                            size={12}
-                            className="text-brand-orange shrink-0 mt-0.5"
-                          />
-                          <span>{office.address}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Phone
-                            size={12}
-                            className="text-brand-orange shrink-0"
-                          />
-                          <a
-                            href={`tel:${office.phone}`}
-                            className="hover:text-brand-orange transition-colors"
-                          >
-                            {office.phone}
-                          </a>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Mail
-                            size={12}
-                            className="text-brand-orange shrink-0"
-                          />
-                          <a
-                            href={`mailto:${office.email}`}
-                            className="hover:text-brand-orange transition-colors"
-                          >
-                            {office.email}
-                          </a>
+                      <div
+                        key={office.city}
+                        className="border border-brand-grey-border rounded-lg p-4 hover:border-brand-orange transition-colors duration-200"
+                      >
+                        <h4 className="font-heading font-bold text-brand-grey text-sm mb-2">
+                          {office.city}
+                        </h4>
+                        <div className="space-y-1.5 text-xs text-brand-grey-light">
+                          <div className="flex items-start gap-2">
+                            <MapPin
+                              size={12}
+                              className="text-brand-orange shrink-0 mt-0.5"
+                            />
+                            <span>{office.address}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Phone
+                              size={12}
+                              className="text-brand-orange shrink-0"
+                            />
+                            <a
+                              href={`tel:${office.phone}`}
+                              className="hover:text-brand-orange transition-colors"
+                            >
+                              {office.phone}
+                            </a>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Mail
+                              size={12}
+                              className="text-brand-orange shrink-0"
+                            />
+                            <a
+                              href={`mailto:${office.email}`}
+                              className="hover:text-brand-orange transition-colors"
+                            >
+                              {office.email}
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>

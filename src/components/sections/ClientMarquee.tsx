@@ -25,7 +25,7 @@ function ClientCard({ client }: { client: (typeof clients)[0] }) {
 }
 
 export default function ClientMarquee() {
-  const doubled = [...clients, ...clients]
+  const repeated = [...clients, ...clients, ...clients, ...clients]
 
   return (
     <section className="border-y border-brand-grey-border bg-white py-10 overflow-hidden">
@@ -37,20 +37,19 @@ export default function ClientMarquee() {
 
       <div className="relative flex overflow-hidden group">
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
 
-        <div className="flex animate-marquee group-hover:[animation-play-state:paused] whitespace-nowrap">
-          {doubled.map((client, i) => (
+        <div className="flex animate-marquee group-hover:[animation-play-state:paused] will-change-transform">
+          {repeated.map((client, i) => (
             <ClientCard key={i} client={client} />
           ))}
         </div>
 
         <div
-          className="flex animate-marquee group-hover:[animation-play-state:paused] whitespace-nowrap absolute left-0"
+          className="flex animate-marquee group-hover:[animation-play-state:paused] will-change-transform"
           aria-hidden="true"
-          style={{ transform: 'translateX(100%)' }}
         >
-          {doubled.map((client, i) => (
+          {repeated.map((client, i) => (
             <ClientCard key={i} client={client} />
           ))}
         </div>
