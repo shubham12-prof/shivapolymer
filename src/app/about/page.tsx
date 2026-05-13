@@ -46,8 +46,15 @@ const team = [
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-brand-grey py-16 md:py-20 border-b-4 border-brand-orange">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section
+        className="relative py-16 md:py-20 border-b-4 border-brand-orange bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/images/gallery/company.jpeg')",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <span className="inline-block text-brand-orange text-xs font-bold tracking-widest uppercase mb-3">
               About Us
@@ -57,7 +64,7 @@ export default function AboutPage() {
               Trusted Polymer Material Supplier
             </h1>
 
-            <p className="text-gray-400 text-lg leading-relaxed">
+            <p className="text-gray-300 text-lg leading-relaxed">
               Polytech Materials supplies premium HDPE, LDPE, and PP materials
               for industrial and commercial applications.
             </p>
