@@ -1,9 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { Send, CheckCircle2 } from 'lucide-react'
+import emailjs from '@emailjs/browser'
+import { Send, CheckCircle2, AlertCircle } from 'lucide-react'
 import Button from '@/components/ui/Button'
-import { cn } from '@/lib/utils'
+
+emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!)
 
 const inquiryTypes = [
   'Product Enquiry',
@@ -35,22 +37,65 @@ export default function ContactForm() {
   const [form, setForm] = useState<FormState>(initial)
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   function handleChange(
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) {
+    setError(null)
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
+    setError(null)
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
+    if (!serviceId || !templateId || !publicKey) {
+      setError('Email service is not configured. Please contact us directly.')
+      console.error('Missing EmailJS env vars:', {
+        serviceId,
+        templateId,
+        publicKey,
+      })
+      return
+    }
+
+    try {
+      setLoading(true)
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          to_email: 'ronakdhyani16@gmail.com',
+          name: form.name,
+          company: form.company,
+          email: form.email,
+          phone: form.phone,
+          inquiry: form.inquiry,
+          message: form.message,
+        },
+        publicKey
+      )
+
       setSubmitted(true)
-    }, 1200)
+      setForm(initial)
+    } catch (err: unknown) {
+      console.error('EmailJS error:', err)
+      const detail =
+        err && typeof err === 'object' && 'text' in err
+          ? (err as { text: string }).text
+          : 'Unknown error'
+      setError(`Failed to send message (${detail}). Please try again.`)
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (submitted) {
@@ -80,7 +125,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label className="block text-xs font-semibold text-brand-grey uppercase tracking-wide mb-1.5">
@@ -176,6 +221,13 @@ export default function ContactForm() {
           className="w-full px-4 py-2.5 border border-brand-grey-border rounded text-sm text-brand-grey placeholder:text-brand-grey-light focus:outline-none focus:border-brand-orange transition-colors duration-200 resize-none"
         />
       </div>
+
+      {error && (
+        <div className="flex items-start gap-3 rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          <AlertCircle size={16} className="mt-0.5 shrink-0" />
+          <span>{error}</span>
+        </div>
+      )}
 
       <Button
         type="submit"
