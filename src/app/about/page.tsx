@@ -1,5 +1,13 @@
 import type { Metadata } from 'next'
-import { ShieldCheck, TrendingUp, User } from 'lucide-react'
+import {
+  ShieldCheck,
+  TrendingUp,
+  User,
+  Wrench,
+  ClipboardCheck,
+  HeadphonesIcon,
+  Truck,
+} from 'lucide-react'
 import CtaBanner from '@/components/sections/CtaBanner'
 import Image from 'next/image'
 
@@ -7,12 +15,14 @@ export const metadata: Metadata = {
   title: 'About Us',
   description: 'Trusted supplier of HDPE, LDPE, and PP polymer materials.',
 }
+
 const clients = [
   { name: 'BASF', logo: '/images/clients/aditya.png' },
   { name: 'Dow Chemical', logo: '/images/clients/chmaya.png' },
   { name: 'LyondellBasell', logo: '/images/clients/adyani.png' },
   { name: 'Sabic', logo: '/images/clients/mahavir.png' },
 ]
+
 const values = [
   {
     icon: ShieldCheck,
@@ -25,6 +35,39 @@ const values = [
     title: 'Trusted Service',
     description:
       'Focused on long-term customer relationships through dependable support and supply.',
+  },
+]
+
+const stats = [
+  { stat: '5+', label: 'Years of Experience' },
+  { stat: '4', label: 'Industry Served' },
+  { stat: '99%', label: 'Quality Pass Rate' },
+]
+
+const expertise = [
+  {
+    icon: Wrench,
+    title: 'Technical Expertise',
+    description:
+      'Over five-plus years, we have developed deep expertise in processing and characterizing HDPE, LDPE, and PP materials. We evaluate melt flow index, tensile strength, impact resistance, and thermal properties to ensure every material meets the precise requirements of industrial and packaging clients.',
+  },
+  {
+    icon: ClipboardCheck,
+    title: 'Quality & Compliance',
+    description:
+      'We maintain rigorous quality assurance protocols aligned with ISO and ASTM standards. Every batch undergoes incoming material inspection, in-process testing, and final product evaluation — minimizing defects and ensuring our polymer solutions consistently exceed client expectations.',
+  },
+  {
+    icon: HeadphonesIcon,
+    title: 'Client & Application Support',
+    description:
+      'We support a diverse portfolio of industrial, packaging, and manufacturing clients — advising on the most suitable polymer grade based on application needs such as chemical resistance, flexibility, load-bearing capacity, and processing compatibility.',
+  },
+  {
+    icon: Truck,
+    title: 'Supply Chain & Operations',
+    description:
+      'From raw material procurement and inventory management to timely dispatch, we coordinate end-to-end supply chain operations. Our logistics network ensures large-volume orders of HDPE, LDPE, and PP are fulfilled within committed timelines, reducing lead times and improving client satisfaction.',
   },
 ]
 
@@ -84,19 +127,74 @@ export default function AboutPage() {
             </h2>
 
             <p className="text-brand-grey-light leading-relaxed mb-4">
-              We provide reliable HDPE, LDPE, and PP polymer materials for
-              packaging, industrial, and manufacturing industries.
+              With over 5 years of industry experience, we provide reliable
+              HDPE, LDPE, and PP polymer materials for packaging, industrial,
+              and manufacturing industries. Our deep technical knowledge allows
+              us to match the right material grade to every application —
+              whether it demands chemical resistance, flexibility, or high
+              load-bearing capacity.
             </p>
 
             <p className="text-brand-grey-light leading-relaxed">
               Our goal is to deliver dependable products, consistent quality,
-              and trusted customer service for every client.
+              and trusted customer service for every client. Backed by hands-on
+              expertise in extrusion, injection molding, and blow molding
+              processes, we ensure every batch meets stringent ISO and ASTM
+              standards before it reaches your facility.
             </p>
           </div>
         </div>
       </section>
 
       <section className="py-16 md:py-20 bg-brand-grey-bg border-y border-brand-grey-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-block text-brand-orange text-xs font-bold tracking-widest uppercase mb-3">
+              Our Experience
+            </span>
+            <h2 className="font-heading text-3xl font-bold text-brand-grey">
+              5+ Years of Polymer Expertise
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-12">
+            {stats.map(({ stat, label }) => (
+              <div
+                key={label}
+                className="bg-white border border-brand-grey-border rounded-lg p-8 hover:border-brand-orange hover:shadow-md transition-all duration-200"
+              >
+                <p className="font-heading text-4xl font-bold text-brand-orange mb-2">
+                  {stat}
+                </p>
+                <p className="text-brand-grey-light text-sm font-medium">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {expertise.map(({ icon: Icon, title, description }) => (
+              <div
+                key={title}
+                className="bg-white border border-brand-grey-border rounded-lg p-6 hover:border-brand-orange hover:shadow-md transition-all duration-200"
+              >
+                <div className="w-10 h-10 rounded bg-brand-orange/10 flex items-center justify-center mb-4">
+                  <Icon size={20} className="text-brand-orange" />
+                </div>
+                <h3 className="font-heading font-bold text-brand-grey text-lg mb-3">
+                  {title}
+                </h3>
+                <p className="text-brand-grey-light text-sm leading-relaxed">
+                  {description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 bg-white border-b border-brand-grey-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="inline-block text-brand-orange text-xs font-bold tracking-widest uppercase mb-3">
@@ -130,6 +228,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
       <section className="py-6 md:py-6 bg-white border-t border-brand-grey-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
@@ -163,6 +262,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
